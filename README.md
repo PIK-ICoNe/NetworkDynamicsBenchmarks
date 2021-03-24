@@ -1,6 +1,7 @@
 This repository contains scripts for benchmarking dynamical systems on networks. Usage Instructions are found below. Details on our methodology are reported in our paper on [NetworkDynamics.jl -- Composing and simulating complex networks in Julia](https://arxiv.org/abs/2012.12696). Below you see a plot of competing runtimes simulating a Kuramoto network of 10, respectively 1000 oscillators with Dormand-Prince's 5th order method.
 
 ![Work precision diagram of a network with 10 Kuramoto oscillators.](https://github.com/PIK-ICoN/NetworkDynamicsBenchmarks/blob/main/utils/plotting/WPD10.png?raw=true)
+![Work precision diagram of a network with 100 Kuramoto oscillators.](https://github.com/PIK-ICoN/NetworkDynamicsBenchmarks/blob/main/utils/plotting/WPD100.png?raw=true)
 ![Work precision diagram of a network with 1000 Kuramoto oscillators.](https://github.com/PIK-ICoN/NetworkDynamicsBenchmarks/blob/main/utils/plotting/WPD1000.png?raw=true)
 
 
