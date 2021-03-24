@@ -1,0 +1,13 @@
+decorator==4.4.2
+Jinja2==2.11.2
+jitcode==1.6.0
+jitcxde-common==1.5.2
+MarkupSafe==1.1.1
+mpmath==1.1.0
+networkx==2.5
+numpy==1.19.4
+pkg-resources==0.0.0
+scipy==1.5.4
+symengine==0.6.1
+sympy==1.6.2
+

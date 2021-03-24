@@ -1,0 +1,16 @@
+name = "kurabenchmark"
+version = "0.0.1"
+license = "BSD-3"
+author = "Lucas Lincoln"
+maintainer = "lincoln@b-tu.de"
+copyright = "2021 Lucas Lincoln"
+
+[dependencies]
+iso_varying_string = { git = "https://gitlab.com/everythingfunctional/iso_varying_string.git", tag = "v1.0.0" }
+fsqlite = {git = "https://github.com/Lima-Lima/fsqlite.git"}
+
+[[ executable ]]
+name="FKuraBenchmark"
+source-dir="app"
+main="main.f90"
+
