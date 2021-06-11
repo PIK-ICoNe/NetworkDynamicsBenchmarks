@@ -1,8 +1,20 @@
-This repository contains scripts for benchmarking dynamical systems on networks. Usage Instructions are found below. Details on our methodology are reported in our paper on [NetworkDynamics.jl -- Composing and simulating complex networks in Julia](https://arxiv.org/abs/2012.12696). Below you see a plot of competing runtimes simulating a Kuramoto network of 10, respectively 1000 oscillators with Dormand-Prince's 5th order method.
+This repository contains scripts for benchmarking dynamical systems on networks. Usage Instructions are found below. Details on our methodology are reported in our [paper]((https://arxiv.org/abs/2012.12696) on [NetworkDynamics.jl](https://github.com/PIK-ICoN/NetworkDynamics.jl). Below you see plots of competing runtimes simulating a Kuramoto network of 10, 100 and 1000 oscillators.
 
 ![Work precision diagram of a network with 10 Kuramoto oscillators.](https://github.com/PIK-ICoNe/NetworkDynamicsBenchmarks/blob/main/utils/plotting/WPD10.png?raw=true)
 ![Work precision diagram of a network with 100 Kuramoto oscillators.](https://github.com/PIK-ICoNe/NetworkDynamicsBenchmarks/blob/main/utils/plotting/WPD100.png?raw=true)
 ![Work precision diagram of a network with 1000 Kuramoto oscillators.](https://github.com/PIK-ICoNe/NetworkDynamicsBenchmarks/blob/main/utils/plotting/WPD1000.png?raw=true)
+
+In the concrete implementations we tried to strike a balance between usability (writing code should feel "simple") and performance. We compare two implementations in Python (SciPy and JiTCODE, the later JIT-compiles a C function for the ODE), two in Julia (NetworkDynamics.jl and incidence matrix multiplication with SparseArrays.jl) and one in Fortran (similar approach as for SparseArrays.jl).
+
+The JITCODE (and SciPy) version is derived from this publication and does not make use of the symmetry of the sine function 𝑠𝑖𝑛(𝑦−𝑥)=−𝑠𝑖𝑛(𝑥−𝑦), which means that the right hand side function evaluates roughly twice as many floating point operations.
+
+All programs employ Dormand-Prince's 5th order Runge-Kutta method. For Julia we use DifferentialEquations.jl to solve the ODE.
+
+When startup and JIT-compile time is taking into account we see a different picture. The following plot shows the time until the first trajectory is solved.
+
+![System size vs. total time](https://github.com/PIK-ICoN/NetworkDynamicsBenchmarks/blob/main/utils/plotting/size_vs_jit.png?raw=true)
+
+Fortran isn't shown in this plot since that program doesn't have a JIT compile stage. In fact the whole Fortan benchmark (300 integrations) finishes roughly in the time it takes to startup a Julia session and import all required libraries (Julia 1.5.1).  If you know how to improve the benchmarks or want to add your favourite network dynamics solution in yet another language, we are happy about contributions. Just open a pull request.
 
 
 # Instructions
